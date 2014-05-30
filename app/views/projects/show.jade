@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1 Projects
+
+    .project
+      h1: a(href='/projects/#{project._id}')= project.title
+      h2 #{project.photos.length} Photos
+      -for (var i = 0; i < project.photos.length; i++)
+        img(src='#{project.photos[i]}')
+      h2= project.description
+      h2= project.date
+      h2= project.tags
+      ul
+        li: a(href=project.git) GitHub
+        li: a(href=project.app) Amazon EC2

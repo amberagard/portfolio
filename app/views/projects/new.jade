@@ -1,0 +1,15 @@
+extends ../shared/template
+
+block content
+  h1 New Project
+
+  form(action='/projects', method='post', enctype='multipart/form-data')
+    input.form-control(type='text', name='title', placeholder='Title')
+    textarea.form-control(name='description', placeholder='Description')
+    input.form-control(type='text', name='tags', placeholder='Tags')
+    input.form-control(type='text', name='git', placeholder='Git Repo')
+    input.form-control(type='text', name='app', placeholder='App Url')
+    input.form-control(type='text', name='date', placeholder='Date')
+    input(type='file', name='photos', multiple=true)
+
+    button Add Project

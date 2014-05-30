@@ -1,0 +1,24 @@
+extends ../shared/template
+
+block content
+  h1 Edit Project
+
+  form(action='/projects/#{project._id}/update', method='post')
+    input(type='hidden', name='_method', value='put')
+    input.form-control.input#input1(type='text', name='title', placeholder='Title', value='#{project.title}')
+    input.form-control.input(name='description', placeholder='Description', value='#{project.description}')
+    input.form-control.input(type='text', name='tags', placeholder='Tags', value='#{project.tags}')
+    input.form-control.input(type='text', name='git', placeholder='Git Repo', value='#{project.git}')
+    input.form-control.input(type='text', name='app', placeholder='App Url', value='#{project.app}')
+    input.form-control.input(type='text', name='date', placeholder='Date', value='#{project.date}')
+    button#update Update Project
+
+    h2 #{project.photos.length} Photos
+      -for (var i = 0; i < project.photos.length; i++)
+        img(src='#{project.photos[i]}')
+        button Delete
+
+  form(action='/projects/#{project._id}/addPhotos', method='post')
+    input(type='hidden', name='_method', value='put')
+    input(type='file', name='photos', multiple=true)
+    button Add photo

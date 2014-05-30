@@ -1,0 +1,24 @@
+extends ../shared/template
+
+block content
+  h1 Projects
+
+  #projects
+    each project in projects
+      .project
+        h1: a(href='/projects/#{project._id}')= project.title
+        h2 #{project.photos.length} Photos
+        h2= project.description
+        h2= project.date
+        h2= project.tags
+        ul
+          li: a(href=project.git) GitHub
+          li: a(href=project.app) Amazon EC2
+
+      .delete
+        form(action='/projects/#{project._id}/delete', method='post')
+          button Remove
+
+      .edit
+        form(action='/projects/#{project._id}/edit', method='get')
+          button Edit
